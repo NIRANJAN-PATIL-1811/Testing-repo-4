@@ -1,0 +1,27 @@
+name: Workflow file for Testing-repo-4
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/actions@v3
+
+      - name: Login to DockerHub
+        uses: Docker/login-action@v2
+        with:
+          username: ${{secrets.DOCKER_USERNAME}}
+          password: ${{secrets.DOCKER_PASSWORD}}
+
+      - name: Build Docker Image
+        run: docker build --pull -t ${{secrets.DOCKER_USERNAME}}/practice-2:latest
+
+      - name: Push Docker Image to DockerHub
+        run: docker push ${{secrets.DOCKER_USERNAME}}/practice-2:latest
