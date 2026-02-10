@@ -21,7 +21,7 @@ jobs:
           password: ${{secrets.DOCKERHUB_TOKEN}}
 
       - name: Build Docker Image
-        run: docker build --pull -t ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
+        run: docker build --pull -t ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest .
 
       - name: Push Docker Image to DockerHub
         run: docker push ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
