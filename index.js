@@ -1,7 +1,5 @@
 // This is sample code for first
 
-const myList = [1,5,4,7,8,9,0,3,5,6,8];
-
 function findGreatest(myList) {
   let firstGreatestNum = myList[0];
 
@@ -14,4 +12,4 @@ function findGreatest(myList) {
   return firstGreatestNum;
 }
 
-console.log(findGreatest(myList));
+module.exports = findGreatest;
