@@ -25,3 +25,16 @@ jobs:
 
       - name: Push Docker Image to DockerHub
         run: docker push ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
+        
+      - name: Deploy to AWS
+        uses: appleboy/ssh-action@latest
+        with:
+          host: ${{secrets.AWS_HOSTNAME}}
+          username: ${{secrets.AWS_USERNAME}}
+          key: ${{secrets.AWS_KEY}}
+          script: |
+            docker stop backend || true
+            docker rm backend || true
+            docker pull {{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
+            docker run --name backend -d ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
+            docker image prune -f
