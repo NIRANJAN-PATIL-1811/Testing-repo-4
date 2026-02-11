@@ -1,15 +1,12 @@
-// This is sample code for first
+const express = require('express');
 
-function findGreatest(myList) {
-  let firstGreatestNum = myList[0];
 
-  for (let i of myList) {
-    if (i > firstGreatestNum) {
-      firstGreatestNum = i;
-    }
-  }
+const app = express();
 
-  return firstGreatestNum;
-}
 
-module.exports = findGreatest;
+app.listen(3000, "0.0.0.0", () => {
+  console.log('Server is running at http://0.0.0.0:3000');
+});
+
+
+module.exports = app;
