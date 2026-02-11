@@ -1,0 +1,25 @@
+{
+  "name": "testing-repo-4",
+  "version": "1.0.0",
+  "description": "This is testing repo 4",
+  "homepage": "https://github.com/NIRANJAN-PATIL-1811/Testing-repo-4#readme",
+  "bugs": {
+    "url": "https://github.com/NIRANJAN-PATIL-1811/Testing-repo-4/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NIRANJAN-PATIL-1811/Testing-repo-4.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1"
+  }
+}
