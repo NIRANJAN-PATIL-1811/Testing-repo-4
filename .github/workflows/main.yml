@@ -27,7 +27,7 @@ jobs:
         run: docker push ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
         
       - name: Deploy to AWS
-        uses: appleboy/ssh-action@latest
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{secrets.AWS_HOSTNAME}}
           username: ${{secrets.AWS_USERNAME}}
