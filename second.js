@@ -1,4 +1,5 @@
 const app = require('./index.js');
+require('dotenv/config');
 
 app.get('/', (req, res) => {
   res.send('Hello From Server!');
@@ -14,6 +15,6 @@ app.get('/logout', (req, res) => {
 });
 
 
-app.listen(3000, "0.0.0.0", () => {
-  console.log('Server is running at http://0.0.0.0:3000');
+app.listen(process.env.PORT, `${process.env.IP}`, () => {
+  console.log(`Server is running at http://${process.env.IP}:${process.env.PORT}`);
 });
