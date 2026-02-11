@@ -36,5 +36,5 @@ jobs:
             docker stop backend || true
             docker rm backend || true
             docker pull ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
-            docker run --name backend -d --env-file ${{secrets.ENV_PATH}} -p ${{secrets.DOCKERHUB_PORT}}:${{secrets.DOCKERHUB_PORT}} ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
+            docker run --name backend -d --env-file ${{secrets.ENV_PATH}} -p ${{secrets.DOCKERHUB_PORT_OUTSIDE}}:${{secrets.DOCKERHUB_PORT_INSIDE}} ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
             docker image prune -f
