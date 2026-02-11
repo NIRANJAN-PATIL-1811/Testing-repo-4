@@ -1,7 +1,14 @@
-// This is sample code for second
+const app = require('./index.js');
 
-const myList = [6,7,8,4,5,9,0,3,4,5];
+app.get('/', (req, res) => {
+  res.send('Hello From Server!');
+});
 
-const findGreatest = require('./index.js');
+app.get('/login', (req, res) => {
+  res.send('Login page');
+});
 
-console.log(findGreatest(myList));
+
+app.get('/logout', (req, res) => {
+  res.send('Logout page');
+});
