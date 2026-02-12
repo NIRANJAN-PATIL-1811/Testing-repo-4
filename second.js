@@ -1,11 +1,45 @@
 const app = require('./index.js');
+const connection = require('./db_connection.js');
 require('dotenv/config');
+
+async function saveToDB(username, password) {
+  await connection.query(
+    `
+      CREATE TABLE IF NOT EXISTS user_info
+      (
+        id INT PRIMARY KEY, AUTO_INCREMENT,
+        username VARCHAR(20) NOT NULL,
+        password VARCHAR(20) NOT NULL
+      );
+    `
+  );
+
+
+  await connection.query(
+    `
+      INSERT INTO user_info
+      (username, password)
+      VALUES
+      ('${username}', '${password}');
+    `
+  );
+
+  return true;
+}
 
 app.get('/', (req, res) => {
   res.send('Hello From Server!');
 });
 
-app.get('/login', (req, res) => {
+app.get('/login', async (req, res) => {
+  const { username, password } = req.body;
+  const messageFromDB = await saveToDB(username, password);
+  if (messageFromDB) {
+    console.log('data stored!');
+  }
+  else {
+    console.log('data not stored!');
+  }
   res.send('Login page');
 });
 
