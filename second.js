@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login', async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password } = req.query;
   const messageFromDB = await saveToDB(username, password);
   if (messageFromDB) {
     console.log('data stored!');
