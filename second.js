@@ -7,7 +7,7 @@ async function saveToDB(username, password) {
     `
       CREATE TABLE IF NOT EXISTS user_info
       (
-        id INT PRIMARY KEY, AUTO_INCREMENT,
+        id INT PRIMARY KEY AUTO_INCREMENT,
         username VARCHAR(20) NOT NULL,
         password VARCHAR(20) NOT NULL
       );
