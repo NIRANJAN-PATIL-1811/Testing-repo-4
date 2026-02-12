@@ -14,13 +14,21 @@ const connection = mysql.createPool(
   }
 );
 
-const isConnectionOk = await connection.getConnection();
+async function checkDBConnection(connection) {
+  
+  const isConnectionOk = await connection.getConnection();
 
-if (isConnectionOk) {
-  console.log('DB is connected!');
+  if (isConnectionOk) {
+    console.log('DB is connected!');
+  }
+  else {
+    console.log('DB is not connected!');
+    return;
+  }
+
 }
-else {
-  console.log('DB is not connected!');
-}
+
+checkDBConnection(connection);
+
 
 module.exports = connection;
