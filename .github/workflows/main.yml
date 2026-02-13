@@ -33,8 +33,17 @@ jobs:
           username: ${{secrets.AWS_USERNAME}}
           key: ${{secrets.AWS_KEY}}
           script: |
-            docker stop backend || true
-            docker rm backend || true
+            docker stop backend-1 || true
+            docker rm backend-1 || true
+            docker stop backend-2 || true
+            docker rm backend-2 || true
+            docker stop backend-3 || true
+            docker rm backend-3 || true
+            docker stop backend-4 || true
+            docker rm backend-4 || true
             docker pull ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
-            docker run --name backend -d --env-file ${{secrets.ENV_PATH}} -p ${{secrets.DOCKERHUB_PORT_OUTSIDE}}:${{secrets.DOCKERHUB_PORT_INSIDE}} ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
+            docker run --name backend-1 -d --env-file ${{secrets.ENV_PATH}} -p ${{secrets.DOCKERHUB_PORT_OUTSIDE}}:3000 ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
+            docker run --name backend-2 -d --env-file ${{secrets.ENV_PATH}} -p ${{secrets.DOCKERHUB_PORT_OUTSIDE}}:3001 ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
+            docker run --name backend-3 -d --env-file ${{secrets.ENV_PATH}} -p ${{secrets.DOCKERHUB_PORT_OUTSIDE}}:3002 ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
+            docker run --name backend-4 -d --env-file ${{secrets.ENV_PATH}} -p ${{secrets.DOCKERHUB_PORT_OUTSIDE}}:3003 ${{secrets.DOCKERHUB_USERNAME}}/practice-2:latest
             docker image prune -f
